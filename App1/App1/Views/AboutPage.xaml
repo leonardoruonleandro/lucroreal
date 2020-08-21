@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Views.AboutPage"
+             xmlns:vm="clr-namespace:App1.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">      
+                    <Label Text="LUCRO REAL APP" FontSize="Title" FontAttributes="Bold" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Preço de Compra [R$]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding PrecoDeCompra}" />
+                <Label Text="Crédito ICMS (-) [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding CreditoICMSPercentual}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding CreditoICMSRS, Mode=OneWay, StringFormat='{0:c}'}" />
+                <Label Text="Crédito PIS COFINS (-) [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding CreditoPISPercentual}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding CreditoPISRS, StringFormat='{0:c}'}" />
+                <Label Text="Acréscimo IPI (+) [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding AcrescimoIPIPercentual}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding AcrescimoIPIRS, StringFormat='{0:c}'}" />
+                <Label Text="Preço de custo [R$]" FontSize="Subtitle"/>
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding PrecoDeCusto, StringFormat='{0:c}'}" />
+                <Label Text="Preço de venda [R$]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding PrecoDeVenda}" />
+                <Label Text="Débito ICMS (-) [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding DebitoICMSPercentual}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding DebitoICMSRS, StringFormat='{0:c}'}" />
+                <Label Text="Débito PIS COFINS [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" Text="{Binding DebitoPISPercentual}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding DebitoPISRS}" />
+                <Label Text="Lucro bruto [%]" FontSize="Subtitle"/>
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding LucroBrutoPercentual, StringFormat='{0:N2}'}" />
+                <Entry Placeholder="" IsReadOnly="True" Text="{Binding LucroBrutoRS, StringFormat='{0:c}'}" />
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
